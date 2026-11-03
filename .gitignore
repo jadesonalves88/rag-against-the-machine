@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+data/**
+!data/**/
+!data/**/.gitkeep
+*.egg-info/
+.huggingface/
+
+# Supplied reference attachments are kept locally, outside the submission.
+/vllm-0.10.1.zip
+/datasets_public.zip
+/moulinette.zip
+/README (1).md
+/en.subject.txt
+/data/raw/vllm-0.10.1/
+/entrega.zip

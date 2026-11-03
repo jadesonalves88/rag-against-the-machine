@@ -1,0 +1,36 @@
+[project]
+name = "rag-against-the-machine"
+version = "0.1.0"
+description = "Local codebase RAG with BM25 and Qwen3"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "fire>=0.7,<1",
+    "pydantic>=2.10,<3",
+    "tqdm>=4.67,<5",
+    "numpy>=2.0,<3",
+    "scipy>=1.14,<2",
+    "transformers>=4.51,<5",
+    "torch>=2.6,<3",
+]
+
+[dependency-groups]
+dev = ["flake8>=7,<8", "mypy>=1.15,<2", "types-tqdm>=4.67", "scipy-stubs>=1.14"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[tool.mypy]
+exclude = ["^data/", "^\\.venv/"]
+
+[[tool.mypy.overrides]]
+module = ["torch", "torch.*", "transformers", "transformers.*"]
+follow_imports = "skip"
+
+[[tool.mypy.overrides]]
+module = ["fire", "fire.*"]
+ignore_missing_imports = true
